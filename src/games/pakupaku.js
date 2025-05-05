@@ -189,9 +189,3 @@ function addDots() {
 }
 
 addEventListener("load", onLoad);
-
-function uhhh(canvas) {
-    console.log(canvas.style.cssText);
-    canvas.style.cssText = "image-rendering: pixelated;";
-    console.log(canvas.style.cssText);
-}

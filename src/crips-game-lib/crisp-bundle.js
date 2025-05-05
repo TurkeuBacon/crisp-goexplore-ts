@@ -435,7 +435,6 @@ image-rendering: pixelated;
             canvas.style.cssText = canvasCss + crispCss;
         }
         document.body.appendChild(canvas);
-        uhhh(canvas);
         const setSize = () => {
             const cs = 0.95;
             const wr = innerWidth / innerHeight;
@@ -3050,7 +3049,9 @@ lll
         update$3();
     }
     function update$3() {
-        requestAnimationFrame(update$3);
+        if(autoUpdateEnabled) {
+            requestAnimationFrame(update$3);
+        }
         const now = window.performance.now();
         if (now < nextFrameTime - targetFps / 12) {
             return;
@@ -4543,6 +4544,19 @@ lll
         ['"select"', "sl"],
         ['"lucky"', "uc"],
     ];
+
+    let autoUpdateEnabled = true;
+    function setAutoUpdateEnabled(autoUpdate) {
+        autoUpdateEnabled = autoUpdate;
+        if(autoUpdateEnabled) {
+            update$3();
+        }
+    }
+    function frameStep() {
+        update$3();
+    }
+    exports.frameStep = frameStep;
+    exports.setAutoUpdateEnabled = setAutoUpdateEnabled;
 
     exports.PI = PI;
     exports.abs = abs;
