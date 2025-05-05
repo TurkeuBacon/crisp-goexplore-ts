@@ -1,4 +1,4 @@
-import { CrispController, CrispControlState } from "./crisp-control/crisp-controller";
+import { CrispController } from "./crisp-control/crisp-controller";
 
 const CONTROLLER: CrispController = new CrispController();
 
@@ -12,7 +12,7 @@ function setupModeSelector() {
         option.text = modeName;
         modeSelection.options.add(option);
     });
-    document.onchange = (e) => {
+    document.onchange = () => {
         console.log(modeSelection.selectedIndex);
         CONTROLLER.switchState(modeSelection.selectedIndex);
     };
@@ -22,7 +22,7 @@ function setupFrameStepButton() {
     let frameStepButton: HTMLButtonElement = document.createElement("button");
     frameStepButton.textContent = "Frame Step";
 
-    frameStepButton.onclick = (e) => {
+    frameStepButton.onclick = () => {
         window.frameStep();
     };
 
